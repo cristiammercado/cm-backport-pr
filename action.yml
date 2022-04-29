@@ -1,0 +1,67 @@
+name: 'CM Backport PR'
+author: 'cristiammercado'
+description: 'Backport from a branch to another using a pull request.'
+inputs:
+  token:
+    description: 'Personal access token (PAT) if you dont want to use the default value for this field.'
+    required: false
+    default: '${{ github.token }}'
+  pr-from-branch:
+    description: 'The name of the branch where your changes are implemented. This should be an existing branch on the current repository.'
+    required: true
+  pr-to-branch:
+    description: 'The name of the branch you want the changes pulled into. This should be an existing branch on the current repository.'
+    required: true
+  pr-title:
+    description: 'The title of the new pull request.'
+    required: false
+    default: ''
+  pr-body:
+    description: 'The contents of the pull request.'
+    required: false
+    default: ''
+  pr-fail-if-exists:
+    description: 'If there is already a PR that matches the configured branches, with this option you can control whether you want the action to throw an error.'
+    required: false
+    default: 'true'
+  pr-update-if-exists:
+    description: 'If there is already a PR that matches the configured branches, with this option you can update that PR with the new content.'
+    required: false
+    default: 'false'
+  maintainer-can-modify:
+    description: 'Indicates whether maintainers can modify the pull request.'
+    required: false
+    default: 'true'
+  draft:
+    description: 'Indicates whether the pull request is a draft.'
+    required: false
+    default: 'false'
+  merge-pr-after-created:
+    description: 'Indicates whether the merge should be performed once the PR has been created.'
+    required: false
+    default: 'false'
+  merge-commit-title:
+    description: 'Title for the automatic commit message.'
+    required: false
+    default: ''
+  merge-commit-body:
+    description: 'Extra detail to append to automatic commit message.'
+    required: false
+    default: ''
+  merge-method:
+    description: 'Merge method to use. Possible values are merge, squash or rebase.'
+    required: false
+    default: 'merge'
+outputs:
+  pr-number:
+    description: 'Pull request number.'
+  pr-url:
+    description: 'Pull request URL.'
+  pr-sha:
+    description: 'Commit SHA if merge-pr-after-created is true'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+branding:
+  icon: 'git-pull-request'
+  color: 'purple'

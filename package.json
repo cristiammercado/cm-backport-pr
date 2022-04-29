@@ -1,0 +1,50 @@
+{
+  "name": "cm-backport-pr",
+  "version": "1.0.0",
+  "description": "Backport from a branch to another using a pull request.",
+  "main": "index.js",
+  "homepage": "https://github.com/cristiammercado/cm-backport-pr#readme",
+  "bugs": {
+    "email": "contact@cristiammercado.com",
+    "url": "https://github.com/cristiammercado/cm-backport-pr/issues"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript",
+    "backport",
+    "pr",
+    "pull request",
+    "merge"
+  ],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "prepare": "ncc build src/index.js -o dist --license licenses.txt",
+    "test": "jest",
+    "all": "npm run lint && npm run prepare && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristiammercado/cm-backport-pr.git"
+  },
+  "author": {
+    "name": "Cristiam Mercado",
+    "email": "contact@cristiammercado.com",
+    "url": "https://cristiammercado.com/"
+  },
+  "dependencies": {
+    "@actions/core": "1.7.0",
+    "@actions/github": "5.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.33.4",
+    "eslint": "8.14.0",
+    "jest": "28.0.2"
+  },
+  "engines": {
+    "node": "^16.14.2",
+    "npm": "^8.7.0"
+  }
+}
